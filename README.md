@@ -1,2 +1,2 @@
-# Smart Campus (Develop test)
-* author: Cody Chen
+# React IPCS Data Search Tool
+* Develop for Prof. Hsieh's Smart Campus Project
