@@ -4,13 +4,13 @@ const PORT = 5000;
 const axios = require('axios');
 const cors = require('cors');
 const schedule = require('node-schedule');
-// const res = require('express/lib/response');
 const Pool = require('pg').Pool;
+// const res = require('express/lib/response');
 // const pool = require('./db');
 
-// middleware-full stack
+// middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json());  //req.body
 app.use(express.static('public'));
 
 app.listen(PORT, function (err) {
@@ -20,7 +20,7 @@ app.listen(PORT, function (err) {
 
 const pool = new Pool ({
   user: "postgres",
-  password: "Mamba0824",
+  password: "postgres",
   host: "localhost",
   port: 5432,
   database: "ipcs"
@@ -43,7 +43,7 @@ schedule.scheduleJob('8 * * *', function() {  // schedule at 8 a.m. everyday. (t
       if (obj[i] !== undefined){
         var tmp = new Date(obj[i].timestamp);
         var c = tmp.getTime();
-        c += 28800000;
+        c += 28800000; // In seconds, equals to 8 hours.
         var tmp2 = new Date(c);
         obj[i].timestamp = tmp2;
         pool.query(
